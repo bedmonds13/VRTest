@@ -31,7 +31,7 @@ public class BalloonController : MonoBehaviour
     public void ReleaseBalloon()
     {
         heldBalloon.transform.parent = null;
-        heldBalloon.GetComponent<Rigidbody>().AddForce(Vector3.up * force);
+        heldBalloon.GetComponent<Rigidbody>().AddForce(Vector3.up * force * Time.deltaTime);
         Destroy(heldBalloon, 10f);
         heldBalloon = null;
     }

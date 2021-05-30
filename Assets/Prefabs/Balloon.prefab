@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3392967534209517235}
   - component: {fileID: 3392967534209517244}
+  - component: {fileID: 1907815609687466876}
+  - component: {fileID: 9144075230638254413}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
@@ -48,6 +50,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1907815609687466876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392967534209517234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9cad60e68f4cf74ca8830ece9273b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _particleEffect: {fileID: 7377319563075609167, guid: 9cddcb756750a6f40a4e87c4529bd220,
+    type: 3}
+--- !u!135 &9144075230638254413
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392967534209517234}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.11
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3392967534343389711
 PrefabInstance:
   m_ObjectHideFlags: 0
