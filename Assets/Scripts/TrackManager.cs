@@ -17,8 +17,15 @@ public class TrackManager : MonoBehaviour
         Instance = this;
         InitializeTracks();
     }
-    
 
+    public void PlayerTrigger()
+    {
+        listOfTracks[0].ReturnToPool(3f);
+        listOfTracks.RemoveAt(0);
+        SetTrack();
+    }
+    public void SetTrack() => SetTrack(_trackPrefab);
+    
     void InitializeTracks()
     {
         Track nextTrack;
@@ -26,33 +33,22 @@ public class TrackManager : MonoBehaviour
         {
             nextTrack = SetTrack(_trackPrefab);
             nextTrack.name = "Track Clone: " + i;
-            nextTrack.transform.parent = this.transform;
             FindObjectOfType<RunnerMovement>().SetCurrentTrack(_currentTrack);
         }
     }
-
-    public void SetTrack()
-    {
-        SetTrack(_trackPrefab);
-    }
     Track SetTrack(Track prefab)
     {
-        Track newTrack;
+        Track newTrack = _trackPrefab.Get<Track>();
         if (_currentTrack != null)
         {
-            newTrack = Instantiate(_trackPrefab);
             var nextPosition = listOfTracks[listOfTracks.Count - 1].transform.position + new Vector3(0,0, newTrack.GetComponent<BoxCollider>().bounds.size.z);
             newTrack.transform.position = nextPosition;
             newTrack.transform.rotation = Quaternion.identity;
-            newTrack = newTrack.GetComponent<Track>();
         }
         else
-        { 
-            newTrack = Instantiate(_trackPrefab, Vector3.zero, Quaternion.identity).GetComponent<Track>();
             _currentTrack = newTrack;
-        }
+        
         listOfTracks.Add(newTrack);    
-        newTrack.transform.parent = this.transform;
         Debug.Log(" Setting track complete.");
         return newTrack;
     }

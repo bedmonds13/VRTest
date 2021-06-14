@@ -29,7 +29,7 @@ public class RunnerMovement : MonoBehaviour
     }
     void Update()
     {
-        var forwardDistance =  transform.rotation * Vector3.forward * _forwardSpeed;
+        var forwardDistance = Vector3.forward * _forwardSpeed;
         var totalDistance = forwardDistance;
         
         //Calcualte velocity and add from current position.

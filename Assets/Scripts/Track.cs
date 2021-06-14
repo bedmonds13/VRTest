@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class Track : MonoBehaviour
+public class Track : PooledlMonoBehaviour
 {
     [SerializeField] List <Transform> _trackLane;
     public List <Transform> TrackLanes => _trackLane;
@@ -17,8 +17,6 @@ public class Track : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<RunnerMovement>() != null)
-        {
-            TrackManager.Instance.SetTrack();
-        }
+            TrackManager.Instance.PlayerTrigger();
     }
 }
