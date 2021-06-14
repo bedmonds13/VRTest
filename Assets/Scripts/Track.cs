@@ -12,8 +12,4 @@ public class Track : MonoBehaviour
         _trackLane = GetComponentsInChildren<Transform>().ToList();
         _trackLane.RemoveAt(0);
     }
-    
-
-
-
 }

@@ -6,24 +6,22 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class RunnerMovement : MonoBehaviour
 {
+    public Track CurrentTrack => _currentTrack;
+    public bool SwitchingLanes { get; private set; }
+
 
     [SerializeField] float _forwardSpeed = 2f;
     [SerializeField] float _horizontalSpeed = 2f;
     [SerializeField] float  _jumpForce = 10;
-
+   
     Rigidbody rb;
     Track  _currentTrack;
     int _currentLaneIndex;
-    
-
-    public bool SwitchingLanes { get; private set; }
    
-    private void Awake()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         _currentLaneIndex = 0;
-        _currentTrack = FindObjectOfType<Track>();
-
         transform.position = _currentTrack.TrackLanes[_currentLaneIndex].position;
     }
     void Update()
@@ -65,32 +63,33 @@ public class RunnerMovement : MonoBehaviour
         }
     }
 
-    private bool OnCurrentTrack()
-    {
-        return IsBetween(transform.position.x, _currentTrack.TrackLanes[_currentLaneIndex].transform.position.x - 0.1f, _currentTrack.TrackLanes[_currentLaneIndex].transform.position.x + 0.1f);
-    }
 
-    public bool IsBetween(float testValue, float bound1, float bound2)
-    {
-        return (testValue >= Math.Min(bound1, bound2) && testValue <= Math.Max(bound1, bound2));
-    }
-    private void Jump()
-    {
-        rb.AddForce(transform.up * _jumpForce, ForceMode.Force );
-    }
-
-    private bool CanSwitchLanes(int direction)
-    {
-        if (_currentTrack.TrackLanes.Count > _currentLaneIndex + direction && _currentLaneIndex + direction >= 0)
-            return true;
-        else
-            return false;
-    }
-
-
+    public bool IsBetween(float testValue, float bound1, float bound2) => (testValue >= Math.Min(bound1, bound2) && testValue <= Math.Max(bound1, bound2));
     public void SwitchLanes(int direction)
     {
         _currentLaneIndex += direction;
         var nextLane = _currentTrack.TrackLanes[_currentLaneIndex];
     }
+    
+    void Jump() => rb.AddForce(transform.up * _jumpForce, ForceMode.Force );
+    
+    bool OnCurrentTrack()
+    {
+        return IsBetween(transform.position.x, _currentTrack.TrackLanes[_currentLaneIndex].transform.position.x - 0.1f, _currentTrack.TrackLanes[_currentLaneIndex].transform.position.x + 0.1f);
+    }
+
+    bool CanSwitchLanes(int direction)
+    {
+        if (_currentTrack.TrackLanes.Count > _currentLaneIndex + direction && _currentLaneIndex + direction >= 0)
+            return true;
+        else
+            return false;
+    
+    }
+    public void SetCurrentTrack(Track track)
+    {
+        _currentTrack = track;
+        Debug.Log("Player has new track added.");
+    }
+
 }
