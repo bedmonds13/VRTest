@@ -22,6 +22,9 @@ public class RunnerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         _currentLaneIndex = 0;
+    }
+    void Start()
+    {
         transform.position = _currentTrack.TrackLanes[_currentLaneIndex].position;
     }
     void Update()

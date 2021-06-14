@@ -104,7 +104,9 @@ GameObject:
   - component: {fileID: 1524571538038948181}
   - component: {fileID: 1524571538038948180}
   - component: {fileID: 1524571538038948183}
-  - component: {fileID: 1524571538038948169}
+  - component: {fileID: 497554671364969119}
+  - component: {fileID: 8522380264666046707}
+  - component: {fileID: 509911452704900081}
   m_Layer: 0
   m_Name: TrackTest
   m_TagString: Untagged
@@ -284,7 +286,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 27
+  m_VersionIndex: 78
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -382,7 +384,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1524571538038948169
+--- !u!65 &497554671364969119
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524571538038948182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 0, z: 50}
+  m_Center: {x: 2.5, y: 0, z: 25}
+--- !u!114 &8522380264666046707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -395,3 +410,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trackLane: []
+--- !u!65 &509911452704900081
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524571538038948182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 2, z: 5}
+  m_Center: {x: 2.5, y: 1, z: 45}
