@@ -1590,6 +1590,8 @@ GameObject:
   - component: {fileID: 1764191464}
   - component: {fileID: 1764191463}
   - component: {fileID: 1764191462}
+  - component: {fileID: 1764191465}
+  - component: {fileID: 1764191466}
   m_Layer: 0
   m_Name: XR Rig
   m_TagString: Untagged
@@ -1609,10 +1611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83716b569c72b246ad35952c2be55e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _verticalSpeed: 2
-  _horizontalSpeed: 2
-  _currentTrack: {fileID: 0}
-  _horizontalMovementDelay: 3
+  _forwardSpeed: 2
+  _horizontalSpeed: 1
+  _jumpForce: 200
 --- !u!114 &1764191463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,6 +1648,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1764191465
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764191461}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1764191466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764191461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2018558526
 GameObject:
   m_ObjectHideFlags: 0
