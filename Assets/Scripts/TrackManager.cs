@@ -20,7 +20,7 @@ public class TrackManager : MonoBehaviour
 
     public void PlayerTrigger()
     {
-        listOfTracks[0].ReturnToPool(3f);
+        listOfTracks[0].Return();
         listOfTracks.RemoveAt(0);
         SetTrack();
     }
