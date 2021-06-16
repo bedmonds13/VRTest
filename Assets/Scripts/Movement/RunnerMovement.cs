@@ -59,7 +59,7 @@ public class RunnerMovement : MonoBehaviour
 
             }
         }
-        else if (Input.GetButtonDown("XRI_Right_PrimaryButton") == true)
+        else if (Input.GetButtonDown("XRI_Right_PrimaryButton") == true && rb.velocity.y == 0)
         {
             Debug.Log("Jump Button pressed");
             Jump();

@@ -703,8 +703,9 @@ MonoBehaviour:
   - {fileID: 439032464}
   - {fileID: 1845457751}
   - {fileID: 732182896}
-  _obstacles: {fileID: 8747562236638854641, guid: 26e7516432219de4bb554e6a1b61ec66,
-    type: 3}
+  _obstacles:
+  - {fileID: 8747562236638854641, guid: 306714ecad6b93f4796e180ffbd17ff6, type: 3}
+  - {fileID: 8747562236638854641, guid: 26e7516432219de4bb554e6a1b61ec66, type: 3}
 --- !u!65 &509911452704900081
 BoxCollider:
   m_ObjectHideFlags: 0

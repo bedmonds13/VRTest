@@ -8,7 +8,7 @@ public class Track : PooledlMonoBehaviour, ITakeHit
 {
     [SerializeField] List<Transform> _trackLane;
     [SerializeField] List<Transform> _obstaclePoint;
-    [SerializeField] Obstacle _obstacles;
+    [SerializeField] Obstacle[] _obstacles;
     List<Obstacle> _obstacleList;
 
     public List <Transform> TrackLanes => _trackLane;
@@ -25,7 +25,7 @@ public class Track : PooledlMonoBehaviour, ITakeHit
         _trackLane.RemoveAt(0);
         for (int i = 0; i < _obstaclePoint.Count; i++)
         {
-            var newObstacle =  _obstacles.Get<Obstacle>();
+            var newObstacle =  _obstacles[Random.Range(0,_obstacles.Length)].Get<Obstacle>();
             _obstacleList.Add(newObstacle);
             newObstacle.transform.position = _obstaclePoint[i].position;
         }
