@@ -4,45 +4,49 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class Track : PooledlMonoBehaviour, ITakeHit
+public class Track : PooledlMonoBehaviour
 {
     [SerializeField] List<Transform> _trackLane;
-    [SerializeField] List<Transform> _obstaclePoint;
-    [SerializeField] Obstacle[] _obstacles;
-    List<Obstacle> _obstacleList;
+    [SerializeField] List<Transform> _trackObjectPosition;
+    [SerializeField] TrackObject[] _trackObjects;
+    List<TrackObject> _trackObjectList;
 
     public List <Transform> TrackLanes => _trackLane;
 
-    public void TakeDamage()
-    {
-        
-    }
-    
     void Start()
     {
-        _obstacleList = new List<Obstacle>();
+        _trackObjectList = new List<TrackObject>();
         _trackLane = GetComponentsInChildren<Transform>().ToList();
         _trackLane.RemoveAt(0);
-        for (int i = 0; i < _obstaclePoint.Count; i++)
+        SetObjects();
+    }
+
+    void OnEnable()
+    {
+        //SetObjects();
+        
+    }
+    private void SetObjects()
+    {
+        for (int i = 0; i < _trackObjectPosition.Count; i++)
         {
-            var newObstacle =  _obstacles[Random.Range(0,_obstacles.Length)].Get<Obstacle>();
-            _obstacleList.Add(newObstacle);
-            newObstacle.transform.position = _obstaclePoint[i].position;
+            var newObstacle = _trackObjects[Random.Range(0, _trackObjects.Length)].Get<TrackObject>();
+            _trackObjectList.Add(newObstacle);
+            newObstacle.transform.position = _trackObjectPosition[i].position;
         }
     }
 
     public void Return()
     {
-        foreach (var obstacle in _obstacleList)
+        foreach (var obstacle in _trackObjectList)
         {
             obstacle.ReturnToPool();
         }
-        _obstacleList.Clear();
+        _trackObjectList.Clear();
         ReturnToPool(3f);
-
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<RunnerMovement>() != null)
             TrackManager.Instance.PlayerTrigger();
